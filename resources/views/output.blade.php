@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>QPG</title>
+        <title>Laravel</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -23,53 +23,23 @@
                 color:white;
                 padding: 10px;
             }
-            th, td {
-                border-bottom: 1px solid #ddd;
-                padding: 10px;
-            }
-
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8" style="margin-top:20px">
-                <form action="{{ route('output') }}" method="post">
-                    @csrf
-                    <input type="submit" name="submit" value="Create PDF" class="btn">
-                    <table class="table" style="border">
-                    <thead class="thead-dark">
-                        <tr>
-                        <th></th>
-                        <th scope="col">Id</th>
-                        <th scope="col">Question</th>
+        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900  sm:pt-0">
+            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8" style="margin-top:50px">
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($questions as $question)
-                        <tr>
-                        <td>
-                        <input id="question{{ $question->id }}" type="checkbox" name="selectedQuestions[]" value="{{ $question->id }}"></td>
-                        <th scope="row">{{ $question->id }}</th>
-                        <td><label for="question{{ $question->id }}">{!! $question->question !!}</label></td>
-                        </tr>
-                        <div class"line"></div>
-                        @endforeach
-                   </tbody>
-                    </table>
-                    {{ $questions->links() }}
-                    <br>
-                    <input type="submit" name="submit" value="Create PDF" class="btn">
-                    </form>
-
-                    <script type="text/x-mathjax-config">
-                        MathJax.Hub.Config({
-                        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-                        });
-                        </script>
-                    <script type="text/javascript" async
-                          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-                    </script>
+                <br><br>
+                You have selected following questions Ids
+                <ul>
+                    @foreach($questions as $question)
+                    <li> {{ $question }} </li>
+                    @endforeach
+                </ul>
+                <br><br>
+                <a href="{{ route('questions') }}" class="btn">Go back</a>
+                <br><br>
+                Please download PDF files..
             </div>
         </div>
     </body>
