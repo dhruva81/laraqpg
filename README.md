@@ -25,7 +25,7 @@ Generate application key:
 php artisan key:generate
 ```
 
-Create Database locally 'qpg'
+Create Database locally 'qpg'. 
 Import qpg.sql
 
 Run the dev server (the output will give the address):
